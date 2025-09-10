@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Symmetric Difference Finder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Symmetric Difference Array Finder</h1>
+    <div class="inputs">
+      <div class="array-input">
+        <h2>Array A</h2>
+        <input type="text" id="arrayA" placeholder='e.g. "apple, stick, diamond"' />
+      </div>
+      <div class="array-input">
+        <h2>Array B</h2>
+        <input type="text" id="arrayB" placeholder='e.g. "bread, emerald, stick"' />
+      </div>
+    </div>
+    <button id="findDiffBtn">Find Symmetric Difference</button>
+    <div class="result">
+      <h2>Result:</h2>
+      <div id="resultDisplay"></div>
+    </div>
+  </div>
+  <!-- Sound effects for clicks -->
+  <audio id="clickSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+  <!-- Background music, remove autoplay to start on user click -->
+  <audio id="bgMusic" src="https://kappa.vgmsite.com/soundtracks/nba-jam-1994-snes/ncqhbfpv/02%20Main%20Menu.mp3" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
