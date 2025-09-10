@@ -1,0 +1,59 @@
+// Get DOM elements
+const findBtn = document.getElementById("findDiffBtn");
+const resultDiv = document.getElementById("resultDisplay");
+const arrayAInput = document.getElementById("arrayA");
+const arrayBInput = document.getElementById("arrayB");
+
+const clickSound = document.getElementById("clickSound");
+const bgMusic = document.getElementById("bgMusic");
+
+let musicStarted = false;
+
+// Function to start background music after user interaction
+function playBackgroundMusic() {
+  if (!musicStarted) {
+    bgMusic.play().catch((error) => {
+      console.log("Background music couldn't start automatically:", error);
+    });
+    musicStarted = true;
+  }
+}
+
+// Function to play click sound
+function playClickSound() {
+  clickSound.currentTime = 0;
+  clickSound.play();
+}
+
+// Symmetric Difference Function
+function diffArray(arr1, arr2) {
+  const uniqueInArr1 = arr1.filter((item) => !arr2.includes(item));
+  const uniqueInArr2 = arr2.filter((item) => !arr1.includes(item));
+  return [...uniqueInArr1, ...uniqueInArr2];
+}
+
+// Helper to parse input strings into arrays
+function parseInput(input) {
+  return input
+    .split(",")
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0);
+}
+
+// Event listener for button
+findBtn.addEventListener("click", () => {
+  playClickSound();
+  playBackgroundMusic();
+
+  const arrA = parseInput(arrayAInput.value);
+  const arrB = parseInput(arrayBInput.value);
+
+  const result = diffArray(arrA, arrB);
+
+  if (result.length === 0) {
+    resultDiv.innerHTML =
+      "<em>No differences found. Arrays are identical or empty.</em>";
+  } else {
+    resultDiv.innerHTML = result.join(", ");
+  }
+});
